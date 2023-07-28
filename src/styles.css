@@ -1,0 +1,374 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #F0F0F0 !important;
+}
+
+h5,
+h2 {
+  line-height: 1em;
+}
+
+.text-block {
+  line-height: 3.5
+}
+
+.course-details {
+  background-color: rgba(254, 250, 250, 0.5);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+}
+
+.card {
+  border-radius: 50px;
+}
+
+.welcometext {
+  padding: 5rem 5rem 5rem 10rem !important
+}
+
+.stepper-wrapper {
+  font-family: Arial;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 15px;
+  left: -50%;
+  z-index: 2;
+}
+
+.step-name {
+  font-size: 14px;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 15px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+}
+
+.stepper-item.completed {
+  font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+  background-color: #4bb543;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+}
+
+.stepper-item.Not .step-counter {
+  background-color: #c1c9d1;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+}
+
+.stepper-item.Inprogress .step-counter {
+  background-color: orange;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+}
+
+.step-name.Inprogress {
+  color: orange;
+  font-weight: bold;
+}
+
+.step-name.completed {
+  color: #4bb543;
+  font-weight: bold;
+}
+
+.step-name.active {
+  color: #01003a;
+  font-weight: bold;
+}
+
+.stepper-item.Inprogress::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid orange;
+  width: 100%;
+  top: 15px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item.active .step-counter {
+  background-color: #01003a;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+}
+
+.stepper-item.active::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #01003a;
+  width: 100%;
+  top: 15px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item.Not::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #c1c9d1;
+  width: 100%;
+  top: 15px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 100%;
+  top: 15px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+
+.stepper-item:last-child::after {
+  content: none;
+}
+
+.text-left.block.main_menu {
+  border-bottom: 1px solid white;
+  margin: 2%;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 125px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.resource_card {
+  border-radius: 0px !important;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+}
+
+.swal2-styled {
+  font-size: 12px !important;
+}
+
+h2#swal2-title {
+  font-size: 24px;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  img.image-fulid {
+    width: 100%;
+  }
+
+  .stepper-wrapper {
+    overflow-x: scroll;
+  }
+
+  .step-name {
+    font-size: 6px;
+  }
+
+  .step-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .profile-pic {
+    width: 100%;
+  }
+
+  .modules-title h3 {
+    font-size: 16px;
+  }
+
+  .question {
+    border-radius: 12px;
+  }
+
+  .question h4 {
+    font-size: 16px;
+  }
+
+  .submit {
+    width: 50%;
+  }
+
+  /* .background {
+    display: none;
+  } */
+
+  #gray-background {
+    top: 50% !important;
+    left: 0% !important;
+    height: 350px !important;
+    width: 100% !important;
+  }
+
+  .empty-block {
+    margin-top: 100%;
+  }
+
+  .welcometext {
+    padding: 0rem 0rem 0rem 0rem !important;
+    margin: 16%;
+  }
+
+  .welcometext h2 {
+    font-size: 16px;
+  }
+
+  #gray-background {
+    top: 50% !important;
+    left: 5% !important;
+    height: 350px !important;
+    width: 90% !important;
+  }
+
+  .login-logo {
+    width: 80%;
+  }
+
+  .p-5 {
+    padding: 0rem !important;
+  }
+
+  .stepper-item::after {
+    top: 8px;
+  }
+
+  .stepper-item .step-counter {
+    width: 15px;
+    height: 15px;
+  }
+
+  .stepper-item.Inprogress::after {
+    top: 8px;
+  }
+
+  .stepper-item.active::after {
+    top: 8px;
+  }
+
+  .stepper-item::before {
+    top: 8px;
+  }
+
+  .stepper-item.completed::after {
+    top: 8px;
+  }
+
+  .stepper-item.Not::after {
+    top: 8px;
+  }
+
+  .stepper-item.completed .step-counter {
+    font-size: 6px;
+  }
+
+  .stepper-item.active .step-counter {
+    font-size: 6px;
+  }
+
+  .stepper-item.Not .step-counter {
+    font-size: 6px;
+  }
+
+  span.navbar-text {
+    width: 100%;
+    margin-inline: 40%;
+  }
+
+  .flip-card {
+    margin-inline: 15%;
+  }
+
+  span.text-light {
+    margin-inline: -25%;
+  }
+}

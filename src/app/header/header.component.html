@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/home"><img src="{{HoldData.standards.PROGRAM_LOGO}}" class="image-fluid p-3 ml-4" width="200"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <ul class="navbar-nav mr-auto">
+          
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home" routerLinkActive="active"><b>Home</b></a>
+            </li>
+            &nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/mypage" routerLinkActive="active"><b>My Page</b></a>
+            </li>
+            &nbsp;&nbsp;&nbsp;
+            <li class="nav-item" >
+              <a class="nav-link" (click)="logout()"><b>Logout</b></a>
+            </li>
+   &nbsp;&nbsp;&nbsp;
+          </ul>
+        
+      </span>
+    </div>
+  </nav>

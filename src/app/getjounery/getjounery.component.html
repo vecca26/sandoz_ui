@@ -1,0 +1,194 @@
+<app-header></app-header>
+<div class="sidebar text-center " [style.background-color]="BgColor">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="card" [style.background-color]="BgColor"><img class="profile-pic"
+                        src="{{HoldProfileData.PROFILE_PIC}}" width="250" height="125">
+
+
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <p class="mt-5" style="color:white">Welcome Dr. {{HoldProfileData.NAME | slice:0:15}}</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-left block main_menu"> <a (click)="showJourneyFlow()"><span
+                class="text-center sidebar_text">Journey
+                Flow &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-solid fa-caret-down pull-right"></i></span></a></div>
+    <div *ngIf="journeyFlow">
+        <div class="text-left block" *ngFor="let Data of sidebar.journeyFlow;let i=index;">
+            <a
+                (click)="showContent(Data.CONTENT_ID,Data.CONTENT_TYPE,Data.PROGRAM_FLOW_ID,Data.isAccessable,Data.WARNING_MSG,i)"><i
+                    class="{{Data.ICONS}}"></i>&nbsp;&nbsp;<span
+                    class="text-center sidebar_text">{{Data.CONTENT_NAME}}</span></a>
+
+        </div>
+    </div>
+
+    <div class="text-left block main_menu"> <a (click)="resource()"><span class="text-center sidebar_text">Resource
+                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-solid fa-caret-down pull-right"></i></span></a></div>
+
+    <div *ngIf="Resources">
+        <div class="text-left block" *ngFor="let Data of sidebar.resource;let i=index;">
+            <a
+                (click)="showContent(Data.CONTENT_ID,Data.CONTENT_TYPE,Data.PROGRAM_FLOW_ID,Data.isAccessable,Data.WARNING_MSG)"><i
+                    class="{{Data.ICONS}}"></i>&nbsp;&nbsp;<span
+                    class="text-center sidebar_text">{{Data.CONTENT_NAME}}</span></a>
+
+        </div>
+    </div>
+
+
+    <div class="text-left block main_menu"> <a (click)="Quiz_Polls()"><span class="text-center sidebar_text ">Quiz &
+                Poll
+                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-solid fa-caret-down pull-right"></i></span></a></div>
+
+    <div *ngIf="quizpoll">
+        <div class="text-left block" *ngFor="let Data of sidebar.quizpoll;let i=index;">
+            <a
+                (click)="showContent(Data.CONTENT_ID,Data.CONTENT_TYPE,Data.PROGRAM_FLOW_ID,Data.isAccessable,Data.WARNING_MSG)"><i
+                    class="{{Data.ICONS}}"></i>&nbsp;&nbsp;<span
+                    class="text-center sidebar_text">{{Data.CONTENT_NAME}}</span></a>
+
+        </div>
+    </div>
+
+</div>
+<div class="content mt-3">
+    <div class="container course-details">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-5 pr-5 pt-5 mt-3">
+            <h2 class="text-center">Journey Flow</h2>
+            <div class="stepper-wrapper">
+                <div class="stepper-item" *ngFor="let Data of HoldData;let i=index;"
+                    [ngClass]="status(Data.FLOW_STATUS,Data.isAccessable)">
+                    <div class="step-counter"
+                        (click)="showContent(Data.CONTENT_ID,Data.CONTENT_TYPE,Data.PROGRAM_FLOW_ID,Data.isAccessable,Data.WARNING_MSG,i)">
+                        <i class="{{Data.ICONS}}"></i>
+                    </div>
+                    <div class="step-name text-center" [ngClass]="status(Data.FLOW_STATUS,Data.isAccessable)">
+                        <br />{{Data.CONTENT_NAME}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-5 mb-5 ">
+            <div class="card modules-title text-center">
+                <h3>{{ContentData.TITLE}}</h3>
+            </div>
+            <div *ngIf="test">
+                <div class="card question mt-5 p-2 text-center">
+                    <h4>{{question}}</h4>
+                </div>
+
+                <!-- <div class="card" *ngFor="let data of Test;let i=index;">
+                <input type="text" name="" id="" value="{{data.option}}">
+            </div> -->
+                <div *ngIf="radio">
+                    <form #test="ngForm">
+                        <div class="text-left options p-2 m-2" *ngFor="let data of Test;let i=index;">
+                            <div><span><input type="radio" class="box" name="option"
+                                        value="{{data.IS_CORRECT_ANSWER}},{{data.OPTIONS}}" [checked]="data.ANSWERED == '1'" (click)="showsubmit()"
+                                        ngModel>
+                                    &nbsp;{{data.OPTIONS}} </span></div>
+
+                        </div>
+                        <div class="text-center mt-5" *ngIf="Showbutton">
+                            <button class="btn btn-lg btn-info bts submit" (click)="nextSubmit(test)">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div *ngIf="checkbox">
+                    <form #test="ngForm">
+                        <div class="text-left options p-2 m-2" *ngFor="let data of Test;let i=index;">
+                            <div><span><input class="box" type="checkbox" name="option"
+                                        value="{{data.IS_CORRECT_ANSWER}},{{data.OPTIONS}}" (click)="showsubmit()" [checked]="data.ANSWERED == '1'"
+                                        ngModel>
+                                    &nbsp;{{data.OPTIONS}} </span></div>
+
+                        </div>
+                        <div class="text-center mt-5" *ngIf="Showbutton">
+                            <button class="btn btn-lg btn-info bts submit" *ngIf="submit"
+                                (click)="nextSubmitCheck(test)">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="freetext">
+                    <form #test="ngForm">
+                        <div class="text-left options p-2 m-2">
+                            <div><span><textarea rows="10" name="option" ng-click="showsubmit()"
+                                        ngModel></textarea></span></div>
+
+                        </div>
+                        <div class="text-center mt-5" *ngIf="Showbutton">
+                            <button class="btn btn-lg btn-info bts submit" *ngIf="submit"
+                                (click)="surveySubmit(test)">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div *ngIf="module">
+                <div class="text-center image card mt-5">
+                    <!-- <slideshow #slideshow [imageUrls]="ModuleData"></slideshow> -->
+                    <img src="{{ModuleData}}" title="click here to view the image is fullscree" class="img-fluid slide"
+                        style="cursor: pointer;" (click)="showLightbox(0)" alt="">
+                </div>
+                <ng-image-fullscreen-view [images]="imageObject" [show]="showFlag"
+                    (close)="closeEventHandler()"></ng-image-fullscreen-view>
+                <div class="text-center mt-2">
+                    <button class="btn btn-info" *ngIf="ImagePre" (click)="prev()">Previous</button>&nbsp;&nbsp;
+                    <button class="btn btn-info" (click)="next()">Next</button>
+                    <i class="fa fa-light fa-expand pull-right" style="cursor: pointer;" (click)="showLightbox(0)"></i>
+                </div>
+            </div>
+
+            <div *ngIf="video">
+                <div class="text-center video-class card mt-5">
+                    <video class="embed-responsive " controls [src]="ModuleData" (timeupdate)="setCurrentTime($event)"
+                        controlsList="nodownload" autoplay> </video>
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-info" *ngIf="ImagePre" (click)="prev()">Previous</button>&nbsp;&nbsp;
+                    <button class="btn btn-info" (click)="next()">Next</button>
+                </div>
+            </div>
+
+            <div *ngIf="pdf">
+                <div class="text-center video-class card mt-5">
+                    <iframe class="embed-responsive" [src]="ModuleData" width="1000" height="500"> </iframe>
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-info" *ngIf="ImagePre" (click)="prev()">Previous</button>&nbsp;&nbsp;
+                    <button class="btn btn-info" (click)="next()">Next</button>
+                </div>
+            </div>
+
+
+            <div *ngIf="certificate" #screen>
+                <app-certificate></app-certificate>
+            </div>
+            <div *ngIf="webinar">
+                <div class="text-center video-class card mt-5" *ngIf="webinarscreen">
+                    <h5 class="card-title mt-5">Webinar Start Date and Time: {{ContentData.START_DATE_TIME | date }},
+                        {{ContentData.START_DATE_TIME | date:'h:mm a' }}</h5>
+                    <h5 class="card-title mt-1">Webinar End Date and Time: {{ContentData.END_DATE_TIME | date }},
+                        {{ContentData.END_DATE_TIME | date:'h:mm a' }}</h5>
+                    <div><button class="btn btn-success btn-sm pull-center mb-3"
+                            (click)="redirect(MeetingID,password)">Click to join the webinar</button></div>
+
+                </div>
+                <div class="card text-center p-5" *ngIf="webinartext">
+                    <h2>You are done with your webinar </h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

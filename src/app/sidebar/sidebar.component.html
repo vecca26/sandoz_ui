@@ -1,0 +1,51 @@
+<div class="sidebar text-center" [style.background-color]="BgColor">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="text-center" [style.background-color]="BgColor"><img class="profile-pic"
+                        src="{{HoldProfileData.PROFILE_PIC}}" width="125" height="125">
+                  
+
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <p class="mt-5" style="color:white">Welcome Dr. {{HoldProfileData.NAME | slice:0:15}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-left block main_menu"> <a (click)="showJourneyFlow()"><span
+                class="text-center sidebar_text">Journey Flow &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-solid fa-caret-down pull-right"></i></span></a></div>
+    <div *ngIf="journeyFlow">
+        <div class="text-left block" *ngFor="let Data of HoldData.journeyFlow;let i=index;">
+            <a
+                (click)="Module(Data.CONTENT_TYPE,Data.CONTENT_ID,Data.isAccessable,Data.PROGRAM_FLOW_ID,Data.WARNING_MSG,i)"><i class="{{Data.ICONS}}"></i>&nbsp;&nbsp;<span
+                    class="text-center sidebar_text">{{Data.CONTENT_NAME}}</span></a>
+
+        </div>
+    </div>
+    
+    <div class="text-left block main_menu"> <a (click)="resource()"><span
+        class="text-center sidebar_text">Resource &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-solid fa-caret-down pull-right"></i></span></a></div>
+
+        <div *ngIf="Resources">
+            <div class="text-left block" *ngFor="let Data of HoldData.resource;let i=index;">
+                <a
+                    (click)="Module(Data.CONTENT_TYPE,Data.CONTENT_ID,Data.isAccessable,Data.PROGRAM_FLOW_ID,Data.WARNING_MSG,i)"><i class="{{Data.ICONS}}"></i>&nbsp;&nbsp;<span
+                        class="text-center sidebar_text">{{Data.CONTENT_NAME}}</span></a>
+    
+            </div>
+        </div>
+
+            
+    <div class="text-left block main_menu"> <a (click)="Quiz_Polls()"><span
+        class="text-center sidebar_text">Quiz & Poll &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-solid fa-caret-down pull-right"></i></span></a></div>
+
+        <div *ngIf="quizpoll">
+            <div class="text-left block" *ngFor="let Data of HoldData.quizpoll;let i=index;">
+                <a
+                    (click)="Module(Data.CONTENT_TYPE,Data.CONTENT_ID,Data.isAccessable,Data.PROGRAM_FLOW_ID,Data.WARNING_MSG,i)"><i class="{{Data.ICONS}}"></i>&nbsp;&nbsp;<span
+                        class="text-center sidebar_text">{{Data.CONTENT_NAME}}</span></a>
+    
+            </div>
+        </div>
+</div>

@@ -1,0 +1,126 @@
+.modules-title{
+    background-color:#01003a;
+    color:white;
+}
+
+.options{
+    border: 1px solid #01003a;
+    border-radius: 15px;
+
+}
+button.btn.btn-info {
+    width: 150px;
+}
+.text-center.image.card.mt-5 {
+    border-radius: 0px;
+}
+.text-center.video-class.card.mt-5 {
+    border-radius: 0px;
+}
+img.img-fluid.slide {
+    border-radius: 0px;
+}
+.img-fluid{
+    height:500px !important;
+}
+.sidebar_text{
+    font-size:14px;
+}
+.sidebar {
+    margin: 0;
+    padding: 1%;
+    width: 275px;
+    height: 946px;
+    position: absolute;
+  }
+  .card.question{
+    background-color: white;
+    border-bottom: 1px solid white;
+  }
+  .card {
+   border:none;
+  }
+  img {
+    border-radius: 10px
+}
+#tiny-font{
+    font-size: small;
+    color:black;
+}
+.white-block{
+    background-color: white;
+    padding: 1%;
+}
+.block a{
+    color:white;
+}
+  .sidebar a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+   
+  .sidebar a.active {
+    background-color: #01003a;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 300px;
+    padding: 1px 16px;
+    height: 1050px;
+  }
+  .wordwarrap{
+    line-height: 0.8;
+  }
+
+  .icon {
+    width:30px; 
+    height:30px;
+    position: relative;
+}
+.txt{
+    background-color:red;
+    font-size:xx-small;
+    position: absolute;
+    padding:2px;
+    top: 5px;
+    left: 5px;
+    border-radius: 25px;
+}   
+
+  
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;  
+    position: relative;
+    height: 670px;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+  a {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.slide {
+  height: 150px !important;
+}
+button.btn.btn-info {
+  width: 80px;
+}
+}
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+    
+  }

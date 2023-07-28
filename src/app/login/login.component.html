@@ -1,0 +1,52 @@
+<div class="container-fluid box">
+    <div class="row">
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 mt-5 mb-5">
+            <div class="background" [style.background-color]="BgloginColor">
+                <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 text-center">
+                    <img src="{{UiData.PROGRAM_LOGO}}" class="image-fluid p-3 ml-4 login-logo" width="200">
+                </div>
+                <div class="text-block welcometext mt-5" [style.color]="BgColor"
+                    innerHtml="{{UiData.WELCOME_TXT}}">
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 empty-block">
+
+                    </div>
+                    <div class="col-12 col-md-12 col-sm-6 col-lg-6 col-xl-6" id="gray-background" *ngIf="login"
+                        [style.background-color]="UiData.login_page">
+                        <p class="text-center mt-3 font-weight-bold text-capitalize main-text" [style.color]="BgColor">
+                            LOGIN</p>
+                        <form #form="ngForm">
+                            <input type="text" placeholder="E-mail ID" name="Email" ngModel
+                                [style.border-left]="'4px solid ' + BgColor"><br>
+                            <input type="password" placeholder="Password" name="Password"
+                                [style.border-left]="'4px solid ' + BgColor" ngModel><br>
+                            <button class="btn btn-lg btn-lg" (click)="signIn(form)"
+                                [style.background-color]="BgColor">GET STARTED</button><br>
+                        </form>
+                        <button class="btn btn-lg btn-lg" (click)="showpassword()"
+                            [style.background-color]="BgColor">Forget Password..?</button>
+
+                    </div>
+
+                    <div class="col-12 col-md-12 col-sm-6 col-lg-6 col-xl-6" id="gray-background" *ngIf="forgot"
+                        [style.background-color]="UiData.login_page">
+                        <p class="text-center mt-3 font-weight-bold text-capitalize main-text" [style.color]="BgColor">
+                            Forget Password</p>
+                        <form #forgot="ngForm">
+                            <input type="text" placeholder="E-mail ID" name="Email" ngModel
+                                [style.border-left]="'4px solid ' + BgColor"><br>
+                            <button class="btn btn-lg btn-lg" (click)=" forgotPassword(forgot)"
+                                [style.background-color]="BgColor">GET STARTED</button><br>
+                            <button class="btn btn-lg btn-lg" (click)="showlogin()"
+                                [style.background-color]="BgColor">Go Back</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

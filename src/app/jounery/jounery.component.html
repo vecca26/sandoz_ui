@@ -1,0 +1,17 @@
+<div class="course-details mb-5 order-2">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-5 mb-5 mt-5 ">
+        <h2 class="text-center" [style.color]="BgColor">Journey Flow</h2>
+        <div class="stepper-wrapper">
+            <div class="stepper-item" *ngFor="let Data of HoldData;let i=index;"
+                (click)="Module(Data.CONTENT_TYPE,Data.CONTENT_ID,Data.isAccessable,Data.PROGRAM_FLOW_ID,Data.WARNING_MSG,i)"
+                [ngClass]="status(Data.FLOW_STATUS,Data.isAccessable)">
+                <div class="step-counter"><i class="{{Data.ICONS}}"></i></div>
+                <div class="step-name text-center" [ngClass]="status(Data.FLOW_STATUS,Data.isAccessable)">
+                    <br />{{Data.CONTENT_NAME}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

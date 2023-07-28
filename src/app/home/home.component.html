@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container">
+    <div *ngFor="let data of holdData">
+        <ng-container [ngSwitch]="true">
+            <div *ngSwitchCase="data.block_type === 'block'">
+                <div innerHtml="{{data.CARD_VALUE}}">
+                </div>
+            </div>
+            <div *ngSwitchCase="data.block_type === 'component'"><app-jounery></app-jounery></div>
+
+        </ng-container>
+    </div>
+ 
+</div>
+
+
+<app-footer></app-footer>

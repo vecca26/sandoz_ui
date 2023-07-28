@@ -1,0 +1,147 @@
+<app-header></app-header>
+
+<app-sidebar> </app-sidebar>
+
+
+
+<div class="content mt-3">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-center">
+                <li> <button class="btn btn-lg btn-info nav-button" (click)="ShowProfile()" [style.color]="BgColor">My
+                        Profile</button></li>&nbsp;&nbsp;
+                <li> <button class="btn btn-lg btn-info nav-button" (click)="ShowDashboard()" [style.color]="BgColor">My
+                        Dashboard</button></li>
+                &nbsp;&nbsp;
+                <li> <button class="btn btn-lg btn-info nav-button" (click)="ShowProgress()" [style.color]="BgColor">My
+                        Progress</button></li>&nbsp;&nbsp;
+                <li> <button class="btn btn-lg btn-info nav-button" (click)="ShowJounery()" [style.color]="BgColor">My
+                        Journey Flow</button></li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="container" *ngIf="main">
+        <app-jounery></app-jounery>
+
+    </div>
+    <div class="container course-details" *ngIf="profile">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-5 mb-5 mt-3">
+            <h6 class="text-center" [style.color]="BgColor">My Profile</h6>
+            <div class="card text-center ml-5 mr-5 p-5 profile-block">
+
+                <img class="images" src="{{HoldProfileData.PROFILE_PIC}}" width="150">
+                <div class="details text-center">
+                    <div class="card-title text-area p-3">
+                        <p><span class="label">Name &nbsp;: </span><span
+                                class="user-deatils text-left">{{HoldProfileData.NAME}}</span> </p>
+                    </div>
+                    <div class="card-title text-area p-3">
+                        <p><span class="label">Email &nbsp;: </span><span
+                                class="user-deatils text-left">{{HoldProfileData.EMAIL}}</span></p>
+                    </div>
+                    <div class="card-title text-area p-3">
+                        <p><span class="label">Phone :</span> <span
+                                class="user-deatils  text-left">{{HoldProfileData.PHONE}}</span></p>
+                    </div>
+                    <div class="card-title text-area p-3">
+                        <p><span class="label">City &nbsp;&nbsp;&nbsp;&nbsp;:</span><span
+                                class="user-deatils text-left">{{HoldProfileData.CITY}}</span></p>
+                    </div>
+                    <div class="card-title text-area p-3">
+                        <p><span class="label">Gender :</span><span
+                                class="user-deatils text-left">{{HoldProfileData.GENDER}}</span></p>
+                    </div>
+                </div>
+
+                <button class="btn btn-info btn-lg edit-profile" (click)="edit()">Edit Profile</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="container course-details" *ngIf="editprofile">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-5 mb-5 mt-3">
+            <h6 class="text-center" [style.color]="BgColor">Edit My Profile</h6>
+            <div class="card text-center ml-5 mr-5 p-5 profile-block">
+                <form #profileupdate="ngForm">
+                    <div class="profile-pic">
+                        <img src="{{HoldProfileData.PROFILE_PIC}}" *ngIf="default" width="100" height="100">
+                        <img src="{{url}}" *ngIf="onloads" width="100">
+                    </div>
+                    <label for="imageupload" class="custom-file-upload button" style="cursor: pointer;">
+                        <i class="fa fa-cloud-upload "></i> Upload Profile Image
+                    </label>
+                    <input type="file" name="imageupload" id="imageupload"
+                        (change)="handleFileInput($event.target.files)" multipart>
+                    <div class="details text-center">
+                        <div class="card-title text-area p-3">
+                            <p><span class="label">Name &nbsp;: </span><span class="user-deatils text-left"><input
+                                        name="name" class="form-group" [ngModel]="HoldProfileData.NAME"></span> </p>
+                        </div>
+                        <div class="card-title text-area p-3">
+                            <p><span class="label">Email &nbsp; : </span><span class="user-deatils text-left"><input
+                                        name="email" class="form-group" [ngModel]="HoldProfileData.EMAIL"
+                                        readonly></span> </p>
+                        </div>
+                        <div class="card-title text-area p-3">
+                            <p><span class="label">Phone :</span><span class="user-deatils text-left"><input
+                                        name="phone" class="form-group" [ngModel]="HoldProfileData.PHONE"
+                                        maxlength="10"></span> </p>
+                        </div>
+                        <div class="card-title text-area p-3">
+                            <p><span class="label">City &nbsp;&nbsp;&nbsp; :</span><span
+                                    class="user-deatils text-left"><input name="city" class="form-group"
+                                        [ngModel]="HoldProfileData.CITY"></span> </p>
+                        </div>
+                        <div class="card-title text-area p-3">
+                            <p><span class="label">Gender :</span><span class="user-deatils text-left"><input
+                                        name="gender" class="form-group" [ngModel]="HoldProfileData.GENDER"></span> </p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-info btn-lg edit-profile" (click)="save(profileupdate)">Save</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="container course-details" *ngIf="dashboard">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-5 mb-3 mt-3 ">
+            <h6 class="text-center" [style.color]="BgColor">My Dashboard</h6>
+        </div>
+        <div class="scrolable_block" id="style-2">
+            <div *ngFor="let data of dashboardDetails">
+                <div class="card col-12 col-sm-12 mb-12 col-lg-12 col-xl-12 pl-5 pr-5 mb-3 details-block">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{data.THUMBNAIL}}" class="card-img m-3" style="width:50%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Type: {{data.CONTENT_TYPE}}</h5>
+                                <p class="card-text"><small class="text-muted">Total No of slides: {{data.NO_OF_CONTENTS}}</small></p>
+                                <p class="card-text"><small class="text-muted">Progress: {{data.PROGRESS}}</small></p>
+                                <p class="card-text"><small class="text-muted">Status: {{data.FLOW_STATUS}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+
+    </div>
+    <div class="container course-details" *ngIf="Progress">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-5 mb-5 mt-3">
+            <h2 class="text-center" [style.color]="BgColor">My Progress</h2>
+            <div class="row mt-5 text-center show-block">
+                <div class="p-3 m-1 box">Total no of course : {{Status[0].Total_no_of_course}}</div>
+                <div class="p-3 m-1 box">Not started : {{Status[0].Notstarted}}</div>
+                <div class="p-3 m-1 box">Inprogress : {{Status[0].Inprogress}}</div>
+                <div class="p-3 m-1 box">Completed : {{Status[0].Completed}}</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
